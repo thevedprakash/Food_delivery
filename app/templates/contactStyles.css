@@ -29,16 +29,27 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px; /* Add some spacing between summary and resume */
 }
 
 .summary {
-    max-width: 45%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Add some spacing */
 }
 
 .summary img {
-    max-width: 100%;
+    max-width: 200px; /* Adjust the maximum width of the picture */
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-right: 20px; /* Add some space between the picture and description */
+}
+
+.summary-description {
+    flex-grow: 1; /* Allow the description to take up remaining space */
+}
+
+.summary-description h3 {
+    margin-top: 0; /* Remove default margin */
 }
 
 .resume {
