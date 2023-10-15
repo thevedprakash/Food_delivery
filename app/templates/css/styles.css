@@ -1,6 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-image: url('background.jpg');
+    background-image: url('static/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -14,7 +14,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
-    background-image: url('form_background.jpg');
+    background-image: url('static/form_background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
