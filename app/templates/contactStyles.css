@@ -1,0 +1,81 @@
+/* Add styles specific to the Contact Me page */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('contact_background.jpg'); /* Add your background image path here */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    background-image: url('contact_form_background.jpg'); /* Add your form background image path here */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary {
+    max-width: 45%;
+}
+
+.summary img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.resume {
+    max-width: 45%;
+    text-align: center;
+    margin-left: auto;
+}
+
+.resume a {
+    display: block;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.resume a:hover {
+    background-color: #45a049;
+}
+
+.call-to-action {
+    text-align: center;
+}
+
+.call-to-action button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.call-to-action button:hover {
+    background-color: #45a049;
+}
