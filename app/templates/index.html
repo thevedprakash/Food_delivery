@@ -57,28 +57,6 @@
                 <label for="Delivery_location_longitude">Delivery Location Longitude:</label>
                 <input type="number" step="0.000001" id="Delivery_location_longitude" required><br>
             
-                <!-- <div class="input-group">
-                    <div class="input-item">
-                        <label for="Order_Date">Order Date:</label>
-                        <div class="input-with-icon">
-                            <input type="date" id="Order_Date" required>
-                        </div>
-                    </div>
-            
-                    <div class="input-item">
-                        <label for="Time_Ordered">Time Ordered:</label>
-                        <div class="input-with-icon">
-                            <input type="time" id="Time_Ordered" required>
-                         </div>
-                    </div>
-            
-                    <div class="input-item">
-                        <label for="Time_Order_picked">Time Order Picked:</label>
-                        <div class="input-with-icon">
-                            <input type="time" id="Time_Order_picked" required>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="input-group">
                     <div class="input-item">
                         <label for="Order_Date">Order Date:</label>
@@ -107,10 +85,22 @@
 
             
                 <label for="Weatherconditions">Weather Conditions:</label>
-                <input type="text" id="Weatherconditions" required><br>
+                <select id="Weatherconditions" required>
+                    <option value="1">Windy</option>
+                    <option value="2">Stormy</option>
+                    <option value="3">Fog</option>
+                    <option value="4">Sunny</option>
+                    <option value="5">Cloudy</option>
+                    <option value="6">Sandstorms</option>
+                </select><br>
             
                 <label for="Road_traffic_density">Road Traffic Density:</label>
-                <input type="text" id="Road_traffic_density" required><br>
+                <select id="Road_traffic_density" required>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">High</option>
+                    <option value="4">Jam</option>
+                </select><br>
             
                 <label for="Vehicle_condition">Vehicle Condition:</label>
                 <select id="Vehicle_condition" required>
@@ -120,27 +110,55 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select><br>
-            
+
+                
                 <label for="Type_of_order">Type of Order:</label>
-                <input type="text" id="Type_of_order" required><br>
-            
+                <select id="Type_of_order" required>
+                    <option value="1">Drink</option>
+                    <option value="2">Snack</option>
+                    <option value="3">Meal</option>
+                    <option value="4">Buffet</option>
+                </select><br>
+
                 <label for="Type_of_vehicle">Type of Vehicle:</label>
-                <input type="text" id="Type_of_vehicle" required><br>
-            
+                <select id="Type_of_vehicle" required>
+                    <option value="1">bicycle</option>
+                    <option value="2">scooter</option>
+                    <option value="3">electric_scooter</option>
+                    <option value="4">motorcycle</option>
+                </select><br>
+
+
                 <label for="multiple_deliveries">Multiple Deliveries:</label>
                 <input type="number" step="1" id="multiple_deliveries" required><br>
             
                 <label for="Festival">Festival:</label>
-                <input type="text" id="Festival" required><br>
-            
+                <select id="Festival" required>
+                    <option value="1">No</option>
+                    <option value="2">Yes</option>
+                </select><br>
+
+
                 <label for="City">City:</label>
-                <input type="text" id="City" required><br>
-            
-                <label for="Time_taken">Time Taken (min):</label>
-                <input type="number" step="1" id="Time_taken" required><br>
-            
-                <button type="submit">Predict</button>
-                <button type="button" onclick="resetForm()">Reset</button>
+                <select id="City" required>
+                    <option value="1">Semi-Urban </option>
+                    <option value="2">Urban </option>
+                    <option value="3">Metropolitian </option>
+                </select><br>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">All details filled.</label>
+                </div>
+                <button type="submit" onclick="fetchPrediction();" class="btn btn-lg btn-primary">Submit</button>
+                <button type="button" onclick="resetForm()" id="resetButton" class="d-none" style="float: right;">Reset</button>
+                
+                <hr>
+                <h3 class="text-white d-none" id="resultText">
+                    Estimated Delivery Time:
+                    <small id="result" class="text-white"></small>
+                </h3>
+
             </form>
             
 

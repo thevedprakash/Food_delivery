@@ -49,7 +49,7 @@ def process_type_of_order(df,target_column):
 
 def process_type_of_vehicle(df,target_column):
   type_of_vehicle_dict = df.groupby(['Type_of_vehicle'])[target_column].mean().to_dict()
-  weather_conditions_dict = df['Type_of_vehicle'] = df['Type_of_vehicle'].apply(lambda x: type_of_vehicle_dict[x])
+  df['Type_of_vehicle'] = df['Type_of_vehicle'].apply(lambda x: type_of_vehicle_dict[x])
   return type_of_vehicle_dict
 
 def convert_ordinal(df):

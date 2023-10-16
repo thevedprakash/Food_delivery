@@ -41,6 +41,7 @@ if  __name__ == "__main__":
     model_path = config["model_path"]
     target_column = config["target_column"]
 
+
     # Reading Train data
     df = load_data(train,na_values)
 

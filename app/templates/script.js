@@ -6,27 +6,6 @@ function resetForm() {
 document.getElementById('deliveryForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const source = document.getElementById('source').value;
-    const destination = document.getElementById('destination').value;
-    const weight = parseFloat(document.getElementById('weight').value);
-    const distance = parseFloat(document.getElementById('distance').value);
-    const pickupTime = new Date(document.getElementById('pickupTime').value);
-    const deliveryTime = new Date(document.getElementById('deliveryTime').value);
-
-    // Perform the prediction logic here
-
-    // For demo purposes, let's assume a simple calculation
-    const predictedTime = distance / (weight * 0.1); 
-
-    const result = `Predicted Time: ${predictedTime.toFixed(2)} hours`;
-
-    document.getElementById('result').innerHTML = result;
-});
-
-
-document.getElementById('deliveryForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
     // Capture input values
     var inputs = {
         'ID': document.getElementById('ID').value,
@@ -48,8 +27,8 @@ document.getElementById('deliveryForm').addEventListener('submit', function(even
         'multiple_deliveries': parseFloat(document.getElementById('multiple_deliveries').value),
         'Festival': document.getElementById('Festival').value,
         'City': document.getElementById('City').value,
-        'Time_taken(min)': document.getElementById('Time_taken').value
     };
+    console.log(inputs)
 
     // Send data to API
     fetch('https://example.com/api', {
@@ -66,3 +45,72 @@ document.getElementById('deliveryForm').addEventListener('submit', function(even
     })
     .catch(error => console.error('Error:', error));
 });
+
+function fetchPrediction() {
+    let ID =  document.getElementById('ID').value;
+    let Delivery_person_ID = document.getElementById('Delivery_person_ID').value;
+    let Delivery_person_Age =  parseFloat(document.getElementById('Delivery_person_Age').value);
+    let Delivery_person_Ratings =  parseFloat(document.getElementById('Delivery_person_Ratings').value);
+    let Restaurant_latitude=  parseFloat(document.getElementById('Restaurant_latitude').value);
+    let Restaurant_longitude =  parseFloat(document.getElementById('Restaurant_longitude').value);
+    let Delivery_location_latitude =  parseFloat(document.getElementById('Delivery_location_latitude').value);
+    let Delivery_location_longitude =  parseFloat(document.getElementById('Delivery_location_longitude').value);
+    let Order_Date =  document.getElementById('Order_Date').value;
+    let Time_Ordered =  document.getElementById('Time_Ordered').value;
+    let Time_Order_picked =  document.getElementById('Time_Order_picked').value;
+    let Weatherconditions =  document.getElementById('Weatherconditions').value;
+    let Road_traffic_density =  document.getElementById('Road_traffic_density').value;
+    let Vehicle_condition =  parseInt(document.getElementById('Vehicle_condition').value);
+    let Type_of_order =  document.getElementById('Type_of_order').value;
+    let Type_of_vehicle =  document.getElementById('Type_of_vehicle').value;
+    let multiple_deliveries =  parseFloat(document.getElementById('multiple_deliveries').value);
+    let Festival =  document.getElementById('Festival').value;
+    let City =  document.getElementById('City').value;
+
+    console.log(inputs)
+
+    $.ajax({
+        method: 'GET',
+        url: '/prediction',
+        data: {
+            ID: ID,
+            Delivery_person_ID: Delivery_person_ID,
+            Delivery_person_Age: Delivery_person_Age,
+            Delivery_person_Ratings: Delivery_person_Ratings,
+            Restaurant_latitude: Restaurant_latitude,
+            Restaurant_longitude: Restaurant_longitude,
+            Delivery_location_latitude: Delivery_location_latitude,
+            Delivery_location_latitude: Delivery_location_longitude,
+            Order_Date: Order_Date,
+            Time_Ordered: Time_Ordered,
+            Time_Order_picked: Time_Order_picked,
+            Weatherconditions: Weatherconditions,
+            Road_traffic_density: Road_traffic_density,
+            Vehicle_condition: Vehicle_condition,
+            Type_of_order: Type_of_order,
+            Type_of_vehicle: Type_of_vehicle,
+            multiple_deliveries: multiple_deliveries,
+            Festival: Festival,
+            City:City,
+        },
+        success: function (data) {
+            document.getElementById('resultText').removeAttribute('class', 'd-none');
+            document.getElementById('resultText').setAttribute('class', 'text-white');
+
+            document.getElementById('resetButton').removeAttribute('class');
+            document.getElementById('resetButton').setAttribute('class', 'btn btn-secondary btn-lg');
+            $("#result").text(data)
+
+        },
+        error: function (error_data) {
+            alert(error_data)
+        }
+    })
+}
+
+
+function ResetData() {
+    document.getElementById("formId").reset();
+    document.getElementById('resultText').setAttribute('class', 'd-none');
+    document.getElementById('resetButton').setAttribute('class', 'd-none')
+}
