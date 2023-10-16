@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
-    <link rel="stylesheet" href="css/styles.css"> <!-- Link your existing CSS file -->
-    <link rel="stylesheet" href="css/contactStyles.css"> <!-- Link the new CSS file -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/contactStyles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -14,9 +14,9 @@
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact Me</a></li> <!-- Add this line -->
+                <li><a href="{{ url_for('index')}}">Home</a></li>
+                <li><a href="{{ url_for('about')}}">About</a></li>
+                <li><a href="{{ url_for('contact')}}">Contact Me</a></li> <!-- Add this line -->
             </ul>
         </nav>
         <h1>Your Website</h1>
@@ -28,7 +28,7 @@
 
             <div class="contact-info">
                 <div class="summary">
-                    <img src="css/static/my_picture.jpg" alt="Your Picture">
+                    <img src="static/styles/assets/my_picture.jpg" alt="Your Picture">
                     <div class="summary-description">
                         <h3>Summary</h3>
                         <p>
@@ -55,8 +55,8 @@
 
             <div class="resume">
                 <h3>Resume</h3>
-                <a href="css/static/resume.pdf" target="_blank">Download Resume</a>
-                <iframe src="css/static/resume.pdf" style="width:100%; height:600px;"></iframe>
+                <a href="static/styles/assets/resume.pdf" target="_blank">Download Resume</a>
+                <iframe src="static/styles/assets/resume.pdf" style="width:100%; height:600px;"></iframe>
             </div>
 
 
