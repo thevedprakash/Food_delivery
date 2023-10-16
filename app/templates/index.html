@@ -62,8 +62,7 @@
                     <div class="input-item">
                         <label for="Order_Date">Order Date:</label>
                         <div class="input-with-icon">
-                            <input type="date" id="Order_Date" required>
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13H11v4.59l4.29 4.29 1.41-1.41L12.41 9l2.59-2.59-1.41-1.41L12 7.59V3z"/></svg>
+                            <input type="date" name="" id="Order_Date" required>
                         </div>
                     </div>
             
@@ -71,7 +70,6 @@
                         <label for="Time_Ordered">Time Ordered:</label>
                         <div class="input-with-icon">
                             <input type="time" id="Time_Ordered" required>
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v5l4.75 2.85.5-.83-4-2.35V8z"/></svg>
                         </div>
                     </div>
             
@@ -79,7 +77,6 @@
                         <label for="Time_Order_picked">Time Order Picked:</label>
                         <div class="input-with-icon">
                             <input type="time" id="Time_Order_picked" required>
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v5l4.75 2.85.5-.83-4-2.35V8z"/></svg>
                         </div>
                     </div>
                 </div>
@@ -87,20 +84,20 @@
             
                 <label for="Weatherconditions">Weather Conditions:</label>
                 <select id="Weatherconditions" required>
-                    <option value="1">Windy</option>
-                    <option value="2">Stormy</option>
-                    <option value="3">Fog</option>
-                    <option value="4">Sunny</option>
-                    <option value="5">Cloudy</option>
-                    <option value="6">Sandstorms</option>
+                    <option value="Windy">Windy</option>
+                    <option value="Stormy">Stormy</option>
+                    <option value="Fog">Fog</option>
+                    <option value="Sunny">Sunny</option>
+                    <option value="Cloudy">Cloudy</option>
+                    <option value="Sandstorms">Sandstorms</option>
                 </select><br>
             
                 <label for="Road_traffic_density">Road Traffic Density:</label>
                 <select id="Road_traffic_density" required>
-                    <option value="1">Low</option>
-                    <option value="2">Medium</option>
-                    <option value="3">High</option>
-                    <option value="4">Jam</option>
+                    <option value="Low ">Low</option>
+                    <option value="Medium ">Medium</option>
+                    <option value="High ">High</option>
+                    <option value="Jam ">Jam</option>
                 </select><br>
             
                 <label for="Vehicle_condition">Vehicle Condition:</label>
@@ -115,18 +112,18 @@
                 
                 <label for="Type_of_order">Type of Order:</label>
                 <select id="Type_of_order" required>
-                    <option value="1">Drink</option>
-                    <option value="2">Snack</option>
-                    <option value="3">Meal</option>
-                    <option value="4">Buffet</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Snack">Snack</option>
+                    <option value="Meal">Meal</option>
+                    <option value="Buffet">Buffet</option>
                 </select><br>
 
                 <label for="Type_of_vehicle">Type of Vehicle:</label>
                 <select id="Type_of_vehicle" required>
-                    <option value="1">bicycle</option>
-                    <option value="2">scooter</option>
-                    <option value="3">electric_scooter</option>
-                    <option value="4">motorcycle</option>
+                    <option value="bicycle">bicycle</option>
+                    <option value="scooter">scooter</option>
+                    <option value="electric_scooter">electric_scooter</option>
+                    <option value="motorcycle">motorcycle</option>
                 </select><br>
 
 
@@ -135,35 +132,35 @@
             
                 <label for="Festival">Festival:</label>
                 <select id="Festival" required>
-                    <option value="1">No</option>
-                    <option value="2">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
                 </select><br>
 
 
                 <label for="City">City:</label>
                 <select id="City" required>
-                    <option value="1">Semi-Urban </option>
-                    <option value="2">Urban </option>
-                    <option value="3">Metropolitian </option>
+                    <option value="Semi-Urban ">Semi-Urban </option>
+                    <option value="Urban ">Urban </option>
+                    <option value="Metropolitian ">Metropolitian </option>
                 </select><br>
 
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">All details filled.</label>
                 </div>
-                <button type="submit" onclick="fetchPrediction();" class="btn btn-lg btn-primary">Submit</button>
-                <button type="button" onclick="resetForm()" id="resetButton" class="d-none" style="float: right;">Reset</button>
-                
+                <button type="button" onclick="fetchPrediction();"
+                    class="btn btn-lg btn-primary">Submit</button>
+                <button type="button" onclick="ResetData()" id="resetButton" class="d-none"
+                    style="float: right;">Reset</button>
+
                 <hr>
                 <h3 class="text-white d-none" id="resultText">
-                    Estimated Delivery Time:
+                    Estimated delivery time in minutes :
                     <small id="result" class="text-white"></small>
                 </h3>
 
             </form>
             
-
-            <div id="result"></div>
         </main>
     </div>
 
@@ -171,6 +168,6 @@
         <p>&copy; 2023 Delivery Time Predictor</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src=static/js/script.js></script>
 </body>
 </html>

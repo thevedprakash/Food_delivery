@@ -28,6 +28,8 @@ def decode_predict_input(df,encoded_dict):
     df['Type_of_order'] = df['Type_of_order'].apply(lambda x: type_of_order_dict[x])
     type_of_vehicle_dict = encoded_dict['nominal_dict']['type_of_vehicle_dict']
     df['Type_of_vehicle'] = df['Type_of_vehicle'].apply(lambda x: type_of_vehicle_dict[x])
+
+    print(df)
   
 def preprocess_and_predict(df,encoded_dict):
     '''
@@ -36,7 +38,9 @@ def preprocess_and_predict(df,encoded_dict):
         df : DataFrame or row of observation
         encoded_dict : Dictonary created while training for Categorical Encoded Value.
     '''
+    print(df.columns)
     prepare_data(df)
+    print("After prepare data : ",df)
     decode_predict_input(df,encoded_dict)
     X = df[predictor_column]
     return X

@@ -37,11 +37,7 @@ def process_weatherconditions(df):
     return: 
         Processed Dataframe
     '''
-    weat_con = list(df['Weatherconditions'])
-    weath_con = []
-    for i in range(len(weat_con)):
-        weath_con.append(weat_con[i].split(" ")[1])
-    df['Weatherconditions'] = np.array(weath_con)
+    df['Weatherconditions'] = df['Weatherconditions'].apply(lambda x : x.replace("conditions ",""))
     return df
 
 
@@ -131,6 +127,8 @@ def prepare_data(df):
         Processed Dataframe
     '''
     # Inserting Distance calculated at columns 3.
+    handle_missing_value(df)
+
     df.insert(3, 'distance',calculate_distance(df))
     df['distance'] = df['distance'].astype('float')
 
@@ -138,7 +136,6 @@ def prepare_data(df):
     process_weatherconditions(df)
     process_timecolumns(df)
     process_order_preapre_time(df)
-    handle_missing_value(df)
     drop_columns(df)
     type_conversion(df)
     return df
