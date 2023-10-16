@@ -47,7 +47,7 @@ if  __name__ == "__main__":
 
     # Data processing
     df = prepare_data(df)
-    convert_float(df)
+    process_time_taken(df)
     convert_categorical_columns(df,target_column,model_path)
     model_training(df,target_column,model_list,model_path)
 

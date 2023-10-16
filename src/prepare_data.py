@@ -45,21 +45,6 @@ def process_weatherconditions(df):
     return df
 
 
-def process_time_taken(df):
-    '''
-    This function is to process Time Taken column.
-    params:
-        df : Dataframe to be processed
-    return: 
-        Processed Dataframe
-    '''
-    t_t = list(df['Time_taken(min)'])
-    t_ti = []
-    for i in range(len(t_t)):
-        t_ti.append(t_t[i].split(" ")[1])
-    df['Time_taken(min)'] = np.array(t_ti)
-    return df
-
 def process_timecolumns(df):
     '''
     This function is to process timestamp columns from data for model building.
@@ -124,7 +109,7 @@ def type_conversion(df):
                     'Festival':'object',
                     'City':'object',
                     'multiple_deliveries':'int',
-                    'Time_taken(min)':'int'}
+                    }
                 )
     return df
 
@@ -147,10 +132,10 @@ def prepare_data(df):
     '''
     # Inserting Distance calculated at columns 3.
     df.insert(3, 'distance',calculate_distance(df))
+    df['distance'] = df['distance'].astype('float')
 
     # Processing columns
     process_weatherconditions(df)
-    process_time_taken(df)
     process_timecolumns(df)
     process_order_preapre_time(df)
     handle_missing_value(df)

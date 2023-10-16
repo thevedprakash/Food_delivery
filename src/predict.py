@@ -1,9 +1,8 @@
 import json
 import pickle
 import joblib
-from load_Data import load_data 
+from load_data import load_data 
 from prepare_data import prepare_data
-from preprocessing import convert_float
 from configuration import predictor_column
 
 def decode_predict_input(df,encoded_dict):
@@ -38,7 +37,6 @@ def preprocess_and_predict(df,encoded_dict):
         encoded_dict : Dictonary created while training for Categorical Encoded Value.
     '''
     prepare_data(df)
-    convert_float(df)
     decode_predict_input(df,encoded_dict)
     X = df[predictor_column]
     return X

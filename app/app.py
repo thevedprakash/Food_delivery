@@ -86,7 +86,6 @@ def prediction():
             'multiple_deliveries': multiple_deliveries,
             'Festival': Festival,
             'City':City,
-            'Time_taken(min)': 0,
         }
     
     # Convert input recieved from webpage as dict to dataframe
