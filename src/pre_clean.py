@@ -4,7 +4,7 @@ from configuration import *
 from datetime import timedelta
 
 
-def pre_cleaup(df):
+def pre_cleanup(df):
     '''
     This function is to process Weather conditions column.
     params:
@@ -14,7 +14,8 @@ def pre_cleaup(df):
     '''
     df.replace(" ","",regex=True,inplace=True)
     df['Weatherconditions'] = df['Weatherconditions'].apply(lambda x : x.replace("conditions","") if "conditions" in x else x)
-    df['Time_taken(min)'] = df['Time_taken(min)'].apply(lambda x : x.replace("(min)","") if "(min)" in x else x)   
+    if 'Time_taken(min)' in df.columns:
+        df['Time_taken(min)'] = df['Time_taken(min)'].apply(lambda x : x.replace("(min)","") if "(min)" in x else x).astype(int)  
     return df
 
 
@@ -42,7 +43,9 @@ def fix_datatype(df,
       datetime_column: list of columns to be converted into or supposed to be date.
       time_column: list of columns to be converted into or supposed to be time.
   '''
+  print(" columns in fix_datatypes: ",df.columns)
   for col in category_column:
+    print(col)
     df[col].fillna('-99999999',inplace=True)
     df[col] = df[col].astype(str)
     df[col] = df[col].replace('-99999999', np.nan)
@@ -58,7 +61,7 @@ def fix_datatype(df,
     df[col] = df[col].replace(-99999999.00, np.nan)
 
   for col in datetime_column:
-    df[col] = pd.to_datetime(df[col],dayfirst=True, format='%d-%m-%Y' ,errors='coerce')
+    df[col] = pd.to_datetime(df[col],format='mixed')
 
   for col in time_column:
-    df[col] = pd.to_timedelta(df[col], errors='coerce')
+    df[col] = pd.to_timedelta(df[col])

@@ -43,8 +43,10 @@ def process_type_of_order(df,target_column):
 
 
 def process_type_of_vehicle(df,target_column):
+  print(df['Type_of_vehicle'].unique())
   type_of_vehicle_dict = df.groupby(['Type_of_vehicle'])[target_column].mean().to_dict()
   df['Type_of_vehicle'] = df['Type_of_vehicle'].apply(lambda x: type_of_vehicle_dict[x])
+  print(type_of_vehicle_dict)
   return type_of_vehicle_dict
 
 

@@ -77,12 +77,10 @@ def prediction():
     # Convert input recieved from webpage as dict to dataframe
     df = pd.DataFrame.from_dict([data_dict],orient='columns')
 
-    df.to_csv('test_input.csv',index=False)
-    # # Pre-process and make prediction using model loaded from disk as per the data.
+    df.to_csv('test_input.csv',mode='a', header=False, index=False)
     data = preprocess_and_predict(df,encoded_dict)
-    # print(data)
     prediction = model.predict(data)
-    return str(35.23)
+    return str(prediction[0])
 
 
 @app.route('/', methods=['GET', 'POST'])

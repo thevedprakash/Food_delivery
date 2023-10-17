@@ -28,15 +28,13 @@ na_values =    [
                     "null"
                 ]
 
-predictor_column = ['Delivery_person_Age', 'distance', 'Delivery_person_Ratings',
-       'Weatherconditions', 'Road_traffic_density', 'Vehicle_condition',
-       'Type_of_order', 'Type_of_vehicle', 'multiple_deliveries', 'Festival',
-       'City', 'Order_prep_time']
+predictor_column = ["Delivery_person_Age", "Delivery_person_Ratings", "Weatherconditions", "Road_traffic_density", "Vehicle_condition", 
+    "Type_of_order", "Type_of_vehicle", "multiple_deliveries", "Festival", "City", "distance", "Order_prep_time"]
+      
 
 integer_column = ['Delivery_person_Age',
                   'Vehicle_condition',
-                  'multiple_deliveries',
-                  'Time_taken(min)']
+                  'multiple_deliveries']
 
 float_column =  ['Delivery_person_Ratings',
                   'Restaurant_latitude',

@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import timedelta
 from math import sin, cos, sqrt, atan2, radians
 from configuration import *
-from pre_clean import pre_cleaup, fix_datatype
+from pre_clean import pre_cleanup, fix_datatype, check_category
 
 
 def func_distance(lat1,lon1,lat2,lon2):
@@ -39,9 +39,6 @@ def calculate_distance(df):
     return df
 
 
-
-
-
 def create_orderprep_time(df):
     '''
     This function is to process timestamp columns from data for model building.
@@ -55,7 +52,21 @@ def create_orderprep_time(df):
             y = y + timedelta(days=1)
         return y
 
-    df['Time_Order_picked'] = df.apply(lambda x: func_nextday(x['Time_Orderd'],x['Time_Order_picked']), axis=1)
+    df['Time_Order_picked'] = pd.to_timedelta(df.apply(lambda x: func_nextday(x['Time_Orderd'],x['Time_Order_picked']), axis=1))
+    '''
+    bug fix : Fix this to handle properly.
+    Error:
+        numpy.core._exceptions._UFuncBinaryResolutionError: 
+        ufunc 'add' cannot use operands with types dtype('<m8[ns]') and dtype('float64')
+    ```
+    print("df['Time_Order_picked'] dtype: ",df['Time_Order_picked'].dtype)
+    print("df['Time_Orderd'] dtype: ",df['Time_Orderd'].dtype)
+    df['Time_Order_picked'] dtype:  float64
+    df['Time_Orderd'] dtype:  timedelta64[ns]
+    ```
+    changing df['Time_Order_picked'] datatype to timedelta.
+        df['Time_Order_picked'] = pd.to_timedelta(df['Time_Order_picked'], errors='coerce')
+    '''
     df['Order_prep_time'] = ((df['Time_Order_picked'] - df['Time_Orderd']).dt.total_seconds())/60
     return df
 
@@ -92,11 +103,15 @@ def prepare_data(df):
     return: 
         Processed Dataframe
     '''
-    # Inserting Distance calculated at columns 3.
-    pre_cleaup(df)
+    pre_cleanup(df)
     fix_datatype(df)
+    print(" After datatype fix: ",df.info())
     handle_missing_value(df)
+
     calculate_distance(df)
+    print(df)
     create_orderprep_time(df)
+    print(" Order Prep time creation: ",df)
     drop_columns(df)
+    check_category(df)
     return df

@@ -1,0 +1,2 @@
+ID,Delivery_person_ID,Delivery_person_Age,Delivery_person_Ratings,Restaurant_latitude,Restaurant_longitude,Delivery_location_latitude,Delivery_location_longitude,Order_Date,Time_Orderd,Time_Order_picked,Weatherconditions,Road_traffic_density,Vehicle_condition,Type_of_order,Type_of_vehicle,multiple_deliveries,Festival,City
+0x3474,BANGRES15DEL01,25,4,12.669999,77.35,46.789,56.999,2023-10-16,19:49:00,20:02:00,Windy,Low ,1,Drinks,scooter,1,No,Semi-Urban 
