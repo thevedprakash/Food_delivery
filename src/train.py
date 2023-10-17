@@ -22,6 +22,7 @@ def prepare_training(df,target_column):
 
 
 def model_training(df,target_column,model_list,model_path):
+    print(df.info())
     X_train, X_test, y_train, y_test = prepare_training(df,target_column)
     for model_name, model in model_list:
         print("Model Name : ", model_name)

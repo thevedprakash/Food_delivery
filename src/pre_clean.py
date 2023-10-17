@@ -1,12 +1,7 @@
 import pandas as pd
 import numpy as np
+from configuration import *
 from datetime import timedelta
-
-
-def func_nextday(x,y):
-    if x > y:
-        y = y + timedelta(days=1)
-    return y
 
 
 def pre_cleaup(df):
@@ -20,7 +15,6 @@ def pre_cleaup(df):
     df.replace(" ","",regex=True,inplace=True)
     df['Weatherconditions'] = df['Weatherconditions'].apply(lambda x : x.replace("conditions","") if "conditions" in x else x)
     df['Time_taken(min)'] = df['Time_taken(min)'].apply(lambda x : x.replace("(min)","") if "(min)" in x else x)   
-    df['Time_Order_picked'] = df.apply(lambda x: func_nextday(x['Time_Orderd'],x['Time_Order_picked']), axis=1)
     return df
 
 
@@ -32,11 +26,11 @@ def check_category(df):
 
 
 def fix_datatype(df,
-                 integer_column,
-                 float_column,
-                 category_column,
-                 datetime_column,
-                 time_column):
+                 integer_column=integer_column,
+                 float_column=float_column,
+                 category_column=category_column,
+                 datetime_column=datetime_column,
+                 time_column=time_column):
   '''
   This function is to fix datatypes before any Data cleaning process. 
   This doesn't changes or delete any np.nan values in data.

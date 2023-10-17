@@ -1,8 +1,7 @@
-import json
 import numpy as np
 import pandas as pd
+from datetime import timedelta
 from math import sin, cos, sqrt, atan2, radians
-from load_data import load_data
 from configuration import *
 from pre_clean import pre_cleaup, fix_datatype
 
@@ -24,7 +23,7 @@ def func_distance(lat1,lon1,lat2,lon2):
     a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
     c = 2 * atan2(sqrt(a), sqrt(1 - a))
     distance = format(R * c,'.2f')
-    return distance
+    return float(distance)
 
 
 def calculate_distance(df):
@@ -39,6 +38,10 @@ def calculate_distance(df):
                                                     df['Delivery_location_latitude'],df['Delivery_location_longitude']),axis=1)
     return df
 
+
+
+
+
 def create_orderprep_time(df):
     '''
     This function is to process timestamp columns from data for model building.
@@ -47,6 +50,12 @@ def create_orderprep_time(df):
     return: 
         Processed Dataframe
     '''
+    def func_nextday(x,y):
+        if x > y:
+            y = y + timedelta(days=1)
+        return y
+
+    df['Time_Order_picked'] = df.apply(lambda x: func_nextday(x['Time_Orderd'],x['Time_Order_picked']), axis=1)
     df['Order_prep_time'] = ((df['Time_Order_picked'] - df['Time_Orderd']).dt.total_seconds())/60
     return df
 

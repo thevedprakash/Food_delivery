@@ -40,7 +40,6 @@ def preprocess_and_predict(df,encoded_dict):
     '''
     print(df.columns)
     prepare_data(df)
-    print("After prepare data : ",df)
     decode_predict_input(df,encoded_dict)
     X = df[predictor_column]
     return X
