@@ -31,23 +31,3 @@ def model_training(df,target_column,model_list,model_path):
         save_model(model,os.path.join(model_path, model_name+".joblib"))
 
 
-if  __name__ == "__main__":
-
-    # reading configuration from config file.
-    with open ("config.json",'r') as file:
-        config = json.load(file)
-    train = config["train_path"]
-    na_values = config["na_values"]
-    model_path = config["model_path"]
-    target_column = config["target_column"]
-
-
-    # Reading Train data
-    df = load_data(train,na_values)
-
-    # Data processing
-    df = prepare_data(df)
-    process_time_taken(df)
-    convert_categorical_columns(df,target_column,model_path)
-    model_training(df,target_column,model_list,model_path)
-

@@ -89,6 +89,8 @@ form input, form select { /* Adjusted for select elements */
     fill: #333;
 }
 
+
+
 form button {
     width: 48%;
     padding: 10px;
@@ -101,7 +103,8 @@ form button {
     margin-top: 10px;
 }
 
-form button[type="button"] {
+
+.d-none {
     background-color: #f44336;
 }
 
@@ -116,6 +119,10 @@ form select {
     display: block;
 }
 
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
 
 #result {
     margin-top: 20px;

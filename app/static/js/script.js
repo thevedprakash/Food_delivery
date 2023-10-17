@@ -1,9 +1,3 @@
-function ResetData() {
-    document.getElementById("formId").reset();
-    document.getElementById('resultText').setAttribute('class', 'd-none');
-    document.getElementById('resetButton').setAttribute('class', 'd-none')
-}
-
 function fetchPrediction() {
     let ID =  document.getElementById('ID').value;
     let Delivery_person_ID = document.getElementById('Delivery_person_ID').value;
@@ -74,7 +68,6 @@ function fetchPrediction() {
         success: function (data) {
             document.getElementById('resultText').removeAttribute('class', 'd-none');
             document.getElementById('resultText').setAttribute('class', 'text-white');
-
             document.getElementById('resetButton').removeAttribute('class');
             document.getElementById('resetButton').setAttribute('class', 'btn btn-secondary btn-lg');
             $("#result").text(data)
@@ -85,6 +78,7 @@ function fetchPrediction() {
         }
     })
 }
+
 
 
 function ResetData() {

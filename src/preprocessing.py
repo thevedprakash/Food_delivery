@@ -10,11 +10,7 @@ def process_time_taken(df):
     return: 
         Processed Dataframe
     '''
-    t_t = list(df['Time_taken(min)'])
-    t_ti = []
-    for i in range(len(t_t)):
-        t_ti.append(t_t[i].split(" ")[1])
-    df['Time_taken(min)'] = t_ti
+    df['Time_taken(min)'] =  df['Time_taken(min)'].apply(lambda x : x.replace("(min)",""))
     df['Time_taken(min)'] = df['Time_taken(min)'].astype('float')
     return df
 

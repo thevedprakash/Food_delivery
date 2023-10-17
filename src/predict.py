@@ -45,25 +45,3 @@ def preprocess_and_predict(df,encoded_dict):
     X = df[predictor_column]
     return X
 
-if __name__ == "__main__":
-     
-    # reading configuration from config file.
-    with open ("config.json",'r') as file:
-        config = json.load(file)
-    train = config["test_path"]
-    na_values = config["na_values"]
-    model_path = config["model_path"]
-    target_column = config["target_column"]
-
-    with open('models/encoded.pickle', 'rb') as handle:
-        encoded_dict = pickle.load(handle)
-    
-    model_path = 'models/XgBoost.joblib'
-    saved_model= joblib.load(model_path)
-
-    # Reading Train data
-    df = load_data(train,na_values)
-    test_input = preprocess_and_predict(df,encoded_dict)
-    print(test_input.head())
-    saved_model.predict(test_input.iloc[0:5,:])
-    print(saved_model.predict(test_input.iloc[0:5,:]))
