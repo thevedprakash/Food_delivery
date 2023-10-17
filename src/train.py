@@ -9,6 +9,7 @@ from prepare_data import *
 from preprocessing import *
 from model import model_list
 
+
 def save_model(model,file_name):
     joblib.dump(model,file_name)
 

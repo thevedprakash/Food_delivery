@@ -2,18 +2,6 @@ import os
 import pickle
 
 
-def process_time_taken(df):
-    '''
-    This function is to process Time Taken column.
-    params:
-        df : Dataframe to be processed
-    return: 
-        Processed Dataframe
-    '''
-    df['Time_taken(min)'] =  df['Time_taken(min)'].apply(lambda x : x.replace("(min)",""))
-    df['Time_taken(min)'] = df['Time_taken(min)'].astype('float')
-    return df
-
 def process_road_trafic_density(df):
   road_trafic_density_dict = {
                         'Low ': 1,
@@ -59,6 +47,7 @@ def process_type_of_vehicle(df,target_column):
   df['Type_of_vehicle'] = df['Type_of_vehicle'].apply(lambda x: type_of_vehicle_dict[x])
   return type_of_vehicle_dict
 
+
 def convert_ordinal(df):
   road_trafic_density_dict = process_road_trafic_density(df)
   festival_dict = process_festival(df)
@@ -70,6 +59,7 @@ def convert_ordinal(df):
                  "city_dict" : city_dict
                  }
   return ordinal_dict
+
 
 def convert_nominal_columns(df,target_column):
   weather_conditions_dict = process_weather_conditions(df,target_column)
